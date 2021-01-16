@@ -5,7 +5,7 @@ module.exports = merge(common, {
   mode: "production",
   plugins: [
     new CopyWebpackPlugin({
-      patterns: [{ from: "src/", to: "output/" }]
+      patterns: [{ from: "public/", to: "./" }]
     })
   ]
 });
