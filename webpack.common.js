@@ -1,14 +1,12 @@
 const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: "./src/main.js",
   output: {
     filename: "[name].js",
     path: path.join(__dirname, "output")
-  },
-  devServer: {
-    contentBase: "/public"
   },
   module: {
     rules: [
@@ -45,5 +43,14 @@ module.exports = {
     ]
   },
 
-  plugins: [new VueLoaderPlugin(), new CleanWebpackPlugin()]
+  plugins: [
+    new VueLoaderPlugin(),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: "test vue cli",
+      BASE_URL: "www.baidu.com",
+      template: "./public/index.html",
+      favicon: "./public/favicon.ico"
+    })
+  ]
 };
